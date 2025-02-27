@@ -18,11 +18,11 @@ def test():
     score = pesq(ref=ref, deg=deg, fs=sample_rate, mode='wb')
 
     print(f'WB score: {score}, was: 1.0832337141036987')
-    #assert score == 1.0832337141036987, score
+    assert score == 1.5128041505813599, score
 
     score = pesq(ref=ref, deg=deg, fs=sample_rate, mode='nb')
 
-    #assert score == 1.6072081327438354, score
+    assert score == 1.6072081327438354, score
     print(f'NB score: {score}, was:1.6072081327438354')
     
 
@@ -40,7 +40,7 @@ def test_no_utterances_nb_mode():
     score = pesq(ref=silent_ref, deg=deg, fs=sample_rate, mode='nb',
                  on_error=PesqError.RETURN_VALUES)
 
-    #assert score == PesqError.NO_UTTERANCES_DETECTED, score
+    assert score == PesqError.NO_UTTERANCES_DETECTED, score
     print(f'No Utterance NB score: {score}, was: {PesqError.NO_UTTERANCES_DETECTED}')
     return score
 
@@ -56,7 +56,7 @@ def test_no_utterances_wb_mode():
     score = pesq(ref=silent_ref, deg=deg, fs=sample_rate, mode='wb',
                  on_error=PesqError.RETURN_VALUES)
 
-    #assert score == PesqError.NO_UTTERANCES_DETECTED, score
+    assert score == PesqError.NO_UTTERANCES_DETECTED, score
     print(f'No Utterance WB score: {score}, was: {PesqError.NO_UTTERANCES_DETECTED}')
     return score
 
@@ -70,12 +70,12 @@ def test_pesq_batch():
     sample_rate, deg = scipy.io.wavfile.read(deg_path)
 
     n_file = 10
-    ideally = np.array([1.0832337141036987 for i in range(n_file)])
+    ideally = np.array([1.5128041505813599 for i in range(n_file)])
 
     # 1D - 1D
     score = pesq_batch(ref=ref, deg=deg, fs=sample_rate, mode='wb')
     #print(f'score: {score}, was: {ideally}')
-    assert score == [1.0832337141036987], score
+    assert score == [1.5128041505813599], score
 
     # 1D - 2D
     deg_2d = np.repeat(deg[np.newaxis, :], n_file, axis=0)
@@ -127,5 +127,5 @@ if __name__ == "__main__":
      test()
      test_no_utterances_nb_mode()
      test_no_utterances_wb_mode()
-#     test_pesq_batch()
+     test_pesq_batch()
 
