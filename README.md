@@ -1,9 +1,11 @@
 # pesq
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6549559.svg)](https://doi.org/10.5281/zenodo.6549559)
-[![Downloads](https://pepy.tech/badge/pesq)](https://pepy.tech/project/pesq)
-[![Downloads](https://pepy.tech/badge/pesq/month)](https://pepy.tech/project/pesq)
 
-PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python Users
+PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python Users [Updated for P.862 Corrigendum 2 (03/18)]
+
+# Description 
+This code is an updated version of /ludlows/pesq/ which implements the Corrigendum 2 of the ITU-T P.862 recommendation (PESQ). The correction addresses the under-prediction of subjective scores (by 0.8 MOS on average) by correcting the level of the loudness model.
+
 
 This code is designed for numpy array specially.
 
@@ -91,7 +93,7 @@ When the `ref` is a 2-D numpy array and `deg` is a 2-D numpy array, the result o
 
 The correctness is verified by running samples in audio folder.
 
-PESQ computed by this code in wideband mode is    1.0832337141036987
+PESQ computed by this code in wideband mode is    1.5128041505813599 ~~1.0832337141036987~~ [due to Corrigendum 2]
 
 PESQ computed by this code in narrowband mode is  1.6072081327438354
 
@@ -120,6 +122,7 @@ Please click [here](https://github.com/ludlows/python-pesq/network/dependents) t
    doi          = {10.5281/zenodo.6549559},
    url          = {https://doi.org/10.5281/zenodo.6549559}}
 ```
+
 
 # Acknowledgement
 
