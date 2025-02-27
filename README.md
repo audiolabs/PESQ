@@ -1,7 +1,6 @@
 # pesq
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6549559.svg)](https://doi.org/10.5281/zenodo.6549559)
 
-PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python Users [Updated for P.862 Corrigendum 2 (03/18)]
+PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python [Updated for P.862 Corrigendum 2 (03/18)]
 
 # Description 
 This code is an updated version of /ludlows/pesq/ which implements the Corrigendum 2 of the ITU-T P.862 recommendation (PESQ). The correction addresses the under-prediction of subjective scores (by 0.8 MOS on average) by correcting the level of the loudness model.
@@ -30,7 +29,7 @@ $ pip install https://github.com/ludlows/python-pesq/archive/master.zip
 
 Please note that the sampling rate (frequency) should be 16000 or 8000 (Hz). 
 
-And using 8000Hz is supported for narrowband only.
+A sample rate of 8000 Hz is supported only in narrowband mode.
 
 The code supports error-handling behaviors now.
 
@@ -51,7 +50,7 @@ Once you select `PesqError.RETURN_VALUES`, the `pesq` function will return -1 wh
 
 Once you select `PesqError.RAISE_EXCEPTION`, the `pesq` function will raise an exception when an error occurs.
 
-It supports the following errors now: `InvalidSampleRateError`, `OutOfMemoryError`,`BufferTooShortError`,`NoUtterancesError`,`PesqError`(other unknown errors).
+It now supports the following errors: `InvalidSampleRateError`, `OutOfMemoryError`,`BufferTooShortError`,`NoUtterancesError`,`PesqError`(other unknown errors).
 
 ```python
 from scipy.io import wavfile
@@ -82,7 +81,7 @@ def pesq_batch(fs, ref, deg, mode='wb', n_processor=None, on_error=PesqError.RAI
         pesq_score: list of pesq scores, P.862.2 Prediction (MOS-LQO)
     """
 ```
-this function uses `multiprocessing` features to boost time efficiency.
+This function uses `multiprocessing` features to boost time efficiency.
 
 When the `ref` is an 1-D numpy array and `deg` is a 2-D numpy array, the result of `pesq_batch` is identical to the value of `[pesq(fs, ref, deg[i,:],**kwargs) for i in range(deg.shape[0])]`.
 
@@ -91,7 +90,7 @@ When the `ref` is a 2-D numpy array and `deg` is a 2-D numpy array, the result o
 
 # Correctness
 
-The correctness is verified by running samples in audio folder.
+The correctness is verified by running samples in the audio folder.
 
 PESQ computed by this code in wideband mode is    1.5128041505813599 ~~1.0832337141036987~~ [due to Corrigendum 2]
 
@@ -99,9 +98,9 @@ PESQ computed by this code in narrowband mode is  1.6072081327438354
 
 # Note
 
-Sampling rate (fs|rate) - No default. Must select either 8000Hz or 16000Hz.
+Sampling rate (fs|rate) - No default. You must select either 8000Hz or 16000Hz.
  
-Note there is narrowband (nb) mode only when sampling rate is 8000Hz.
+Note there is narrowband (nb) mode only when the sampling rate is 8000Hz.
 
 The original C source code is modified. 
 
@@ -109,23 +108,8 @@ The original C source code is modified.
 
 Please click [here](https://github.com/ludlows/python-pesq/network/dependents) to see these repositories, whose owners include `Facebook Research`, `SpeechBrain`, `NVIDIA` .etc.
 
-# Cite this code
-
-```
-   @software{miao_wang_2022_6549559,
-   author       = {Miao Wang, Christoph Boeddeker, Rafael G. Dantas and ananda seelan},
-   title        = {PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python Users},
-   month        = may,
-   year         = 2022,
-   publisher    = {Zenodo},
-   version      = {v0.0.4},
-   doi          = {10.5281/zenodo.6549559},
-   url          = {https://doi.org/10.5281/zenodo.6549559}}
-```
-
-
 # Acknowledgement
 
-This work was funded by the Natural Sciences and Engineering Research Council of Canada.
+The work at /ludlows/pesq was funded by the Natural Sciences and Engineering Research Council of Canada.
 
-This work was also funded by the Concordia University, Montreal, Canada.
+The work at /ludlows/pesq was also funded by the Concordia University, Montreal, Canada.
