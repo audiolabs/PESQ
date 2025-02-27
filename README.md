@@ -1,5 +1,7 @@
 # pesq
 
+[![DOI](https://zenodo.org/badge/939487338.svg)](https://doi.org/10.5281/zenodo.14938543)
+
 PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python [Updated for P.862 Corrigendum 2 (03/18)]
 
 # Description 
