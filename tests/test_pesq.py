@@ -24,6 +24,8 @@ def test():
 
     #assert score == 1.6072081327438354, score
     print(f'NB score: {score}, was:1.6072081327438354')
+    
+
     return score
 
 
@@ -39,7 +41,7 @@ def test_no_utterances_nb_mode():
                  on_error=PesqError.RETURN_VALUES)
 
     #assert score == PesqError.NO_UTTERANCES_DETECTED, score
-    print(f'No Utterance NB score: {score}, was: 0.0')
+    print(f'No Utterance NB score: {score}, was: {PesqError.NO_UTTERANCES_DETECTED}')
     return score
 
 
@@ -55,7 +57,7 @@ def test_no_utterances_wb_mode():
                  on_error=PesqError.RETURN_VALUES)
 
     #assert score == PesqError.NO_UTTERANCES_DETECTED, score
-    print(f'No Utterance WB score: {score}, was: 0.0')
+    print(f'No Utterance WB score: {score}, was: {PesqError.NO_UTTERANCES_DETECTED}')
     return score
 
 
