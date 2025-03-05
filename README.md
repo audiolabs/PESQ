@@ -24,7 +24,7 @@ This code is designed for numpy array specially.
 $ pip install pesq
 
 # The Latest Version
-$ pip install https://github.com/ludlows/python-pesq/archive/master.zip
+$ pip install https://github.com/audiolabs/pesq/archive/master.zip
 ```
 
 # Usage for narrowband and wideband Modes
@@ -102,7 +102,7 @@ PESQ computed by this code in narrowband mode is  1.6072081327438354
 
 Sampling rate (fs|rate) - No default. You must select either 8000Hz or 16000Hz.
  
-Note there is narrowband (nb) mode only when the sampling rate is 8000Hz.
+Note that narrowband (nb) mode is only available when the sampling rate is 8000Hz.
 
 The original C source code is modified. 
 
