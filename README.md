@@ -1,11 +1,10 @@
-# pesq
+# pesqc2
 
 [![DOI](https://zenodo.org/badge/939487338.svg)](https://doi.org/10.5281/zenodo.14938543)
 
-PESQ (Perceptual Evaluation of Speech Quality) Wrapper for Python [Updated for P.862 Corrigendum 2 (03/18)]
+This project forks from [ludlows/PESQ](https://github.com/ludlows/PESQ/), updating the PESQ implementation to include its latest correction addressed in [P.862 Corrigendum 2 (03/18)](https://www.itu.int/rec/T-REC-P.862-201803-W!Cor2/en).
 
-# Description 
-This code is an updated version of /ludlows/pesq/ which implements the Corrigendum 2 of the ITU-T P.862 recommendation (PESQ). The correction addresses the under-prediction of subjective scores (by 0.8 MOS on average) by correcting the level of the loudness model.
+The correction addresses the under-prediction of subjective scores (by 0.8 MOS on average) by correcting the level of the loudness model.
 
 
 This code is designed for numpy array specially.
@@ -21,7 +20,7 @@ This code is designed for numpy array specially.
 
 ```bash
 # PyPi Repository
-$ pip install pesq
+$ pip install pesqc2
 
 # The Latest Version
 $ pip install https://github.com/audiolabs/pesq/archive/master.zip
@@ -33,7 +32,7 @@ Please note that the sampling rate (frequency) should be 16000 or 8000 (Hz).
 
 A sample rate of 8000 Hz is supported only in narrowband mode.
 
-The code supports error-handling behaviors now.
+The code supports error-handling behaviors.
 
 ```python
 def pesq(fs, ref, deg, mode='wb', on_error=PesqError.RAISE_EXCEPTION):
@@ -45,7 +44,7 @@ def pesq(fs, ref, deg, mode='wb', on_error=PesqError.RAISE_EXCEPTION):
         mode: 'wb' (wide-band) or 'nb' (narrow-band)
         on_error: error-handling behavior, it could be PesqError.RETURN_VALUES or PesqError.RAISE_EXCEPTION by default
     Returns:
-        pesq_score: float, P.862.2 Prediction (MOS-LQO)
+        pesq_score: float, P.862.2 Prediction (MOS-LQO) including Corrigendum 2
     """
 ```
 Once you select `PesqError.RETURN_VALUES`, the `pesq` function will return -1 when an error occurs.
@@ -56,7 +55,7 @@ It now supports the following errors: `InvalidSampleRateError`, `OutOfMemoryErro
 
 ```python
 from scipy.io import wavfile
-from pesq import pesq
+from pesqc2 import pesq
 
 rate, ref = wavfile.read("./audio/speech.wav")
 rate, deg = wavfile.read("./audio/speech_bab_0dB.wav")
@@ -94,9 +93,11 @@ When the `ref` is a 2-D numpy array and `deg` is a 2-D numpy array, the result o
 
 The correctness is verified by running samples in the audio folder.
 
-PESQ computed by this code in wideband mode is    1.5128041505813599 ~~1.0832337141036987~~ [due to Corrigendum 2]
+PESQ computed by this code in wideband mode is    1.5128041505813599 
+(instead of 1.0832337141036987 which you would obtain without Corrigendum 2)
 
-PESQ computed by this code in narrowband mode is  1.6072081327438354
+PESQ computed by this code in narrowband mode is  1.6072081327438354 
+(no differences with or without Corrigendum 2)
 
 # Note
 
@@ -104,14 +105,4 @@ Sampling rate (fs|rate) - No default. You must select either 8000Hz or 16000Hz.
  
 Note that narrowband (nb) mode is only available when the sampling rate is 8000Hz.
 
-The original C source code is modified. 
-
-# Who is using `pesq`
-
-Please click [here](https://github.com/ludlows/python-pesq/network/dependents) to see these repositories, whose owners include `Facebook Research`, `SpeechBrain`, `NVIDIA` .etc.
-
-# Acknowledgement
-
-The work at /ludlows/pesq was funded by the Natural Sciences and Engineering Research Council of Canada.
-
-The work at /ludlows/pesq was also funded by the Concordia University, Montreal, Canada.
+The original C source code is modified.
