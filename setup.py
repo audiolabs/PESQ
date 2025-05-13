@@ -26,21 +26,21 @@ class CyPesqExtension(Extension):
 extensions = [
     CyPesqExtension(
         "cypesq",
-        ["pesq/cypesq.pyx", "pesq/dsp.c", "pesq/pesqdsp.c", "pesq/pesqmod.c"],
-        include_dirs=['pesq'],
+        ["pesqc2/cypesq.pyx", "pesqc2/dsp.c", "pesqc2/pesqdsp.c", "pesqc2/pesqmod.c"],
+        include_dirs=['pesqc2'],
         language="c")
 ]
 setup(
-    name="pesq",
-    version="0.0.5",
-    author="ludlows",
-    description="Python Wrapper for PESQ Score (narrow band and wide band)",
+    name="pesqc2",
+    version="0.0.4",
+    author="mtorcoli, ModarHalimeh, ludlows",
+    description="Python Wrapper for PESQ Score (narrow band and wide band) - including Corrigendum 2",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ludlows/PESQ",
+    url="https://github.com/audiolabs/PESQ",
     packages=find_packages(),
-    package_data={'pesq': ["*.pyx", "*.h", "dsp.c", "pesqdsp.c", "pesqmod.c"]},
-    ext_package='pesq',
+    package_data={'pesqc2': ["*.pyx", "*.h", "dsp.c", "pesqdsp.c", "pesqmod.c"]},
+    ext_package='pesqc2',
     ext_modules=extensions,
     setup_requires=['setuptools>=18.0', 'cython', 'numpy<2.0'],
     install_requires=['numpy<2.0'],
