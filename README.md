@@ -2,10 +2,10 @@
 
 [![DOI](https://zenodo.org/badge/939487338.svg)](https://doi.org/10.5281/zenodo.14938543)
 
-This project forks from [ludlows/PESQ](https://github.com/ludlows/PESQ/), updating the PESQ implementation to include its latest correction addressed in [P.862 Corrigendum 2 (03/18)](https://www.itu.int/rec/T-REC-P.862-201803-W!Cor2/en).
-
+This project forks from [ludlows/PESQ](https://github.com/ludlows/PESQ/), updating the PESQ implementation to include its latest correction addressed in [P.862 Corrigendum 2 (03/18)](https://www.itu.int/rec/T-REC-P.862-201803-W!Cor2/en). 
 The correction addresses the under-prediction of subjective scores (by 0.8 MOS on average) by correcting the level of the loudness model.
 
+Details can be found in our paper, [Navigating PESQ: Up-to-Date Versions and Open Implementations](https://doi.org/10.48550/arXiv.2505.19760).
 
 This code is designed for numpy array specially.
 
